@@ -3,6 +3,7 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var connect = require('gulp-connect');
 var browserify = require('gulp-browserify');
+var uglify = require('gulp-uglify');
 
 gulp.task('connect', function () {
 	connect.server({
@@ -21,6 +22,7 @@ gulp.task('browserify', function () {
 			insertGlobals: true,
 			debug: !gulp.env.production
 		}))
+		.pipe(uglify())
 		.pipe(gulp.dest('./js'));
 });
 
